@@ -1,12 +1,15 @@
 package rs.aleph.android.example21.activities;
 
 import android.app.Dialog;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -49,6 +52,12 @@ public class MainActivity extends AppCompatActivity{
 
     public static String NOTES = "selectedItemId";
     private SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy.");
+
+    private boolean toast;
+    private boolean notification;
+    private SharedPreferences sharedPreferences;
+    public static final String NOTIFICATION = "pref_notif";
+    public static final String TOAST = "pref_toast";
 
 
     @Override
@@ -402,6 +411,31 @@ public class MainActivity extends AppCompatActivity{
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void showNotification(String title,String message){
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+        //Bitmap bitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.ic_action_real_estates);
+       // builder.setSmallIcon(R.drawable.ic_action_real_estates);
+        builder.setContentTitle(title);
+        builder.setContentText(message);
+        //builder.setLargeIcon(bitmap);
+
+        // Shows notification with the notification manager (notification ID is used to update the notification later on)
+        //umesto this aktivnost
+        NotificationManager manager = (NotificationManager)this.getSystemService(Context.NOTIFICATION_SERVICE);
+        manager.notify(1, builder.build());
+    }
+
+    private void showMessage(String message,String title) {
+        toast = sharedPreferences.getBoolean(TOAST, false);
+        notification = sharedPreferences.getBoolean(NOTIFICATION, false);
+        if (toast) {
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        }
+        if (notification) {
+            showNotification(message, title);
+        }
     }
 
    /* @Override

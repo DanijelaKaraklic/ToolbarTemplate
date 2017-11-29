@@ -6,8 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
 import android.widget.RatingBar;
+import android.widget.TextView;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 
@@ -34,11 +34,11 @@ public class DetailActivity extends AppCompatActivity {
 
     private SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy.");
 
-    private EditText name;
-    private EditText surname ;
+    private TextView name;
+    private TextView surname ;
     private RatingBar rating;
-    private EditText biography;
-    private EditText birthday;
+    private TextView biography;
+    private TextView birthday;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,7 +53,7 @@ public class DetailActivity extends AppCompatActivity {
         }
 
 
-       /* Intent intent = getIntent();
+      /*  Intent intent = getIntent();
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         int identifikator = intent.getExtras().getInt("identifikator");
 
@@ -62,22 +62,50 @@ public class DetailActivity extends AppCompatActivity {
 
 
             //ispisali smo na ekranu osnovne podatke o glumcu
-            name= (EditText)findViewById(R.id.actor_name);
+            name= (TextView) findViewById(R.id.actor_name);
             name.setText(glumac.getmName());
-            surname = (EditText)findViewById(R.id.actor_surname);
+            surname = (TextView) findViewById(R.id.actor_surname);
             surname.setText(glumac.getmSurname());
             rating = (RatingBar) findViewById(R.id.acrtor_rating);
             rating.setRating(glumac.getmRating());
-            birthday = (EditText)findViewById(R.id.actor_birthday);
+            birthday = (TextView) findViewById(R.id.actor_birthday);
             birthday.setText(sdf.format(glumac.getmBirthday()));
-            biography = (EditText)findViewById(R.id.actor_biography);
+            biography = (TextView) findViewById(R.id.actor_biography);
             biography.setText(glumac.getmBiography());
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }*/
+        }
+*/
 
+    /*    // Finds "tvName" TextView and sets "text" property
+        TextView tvName = (TextView) findViewById(R.id.tv_name);
+        tvName.setText(FruitProvider.getFruitById(position).getName());
 
+        // Finds "tvDescription" TextView and sets "text" property
+        TextView tvDescription = (TextView) findViewById(R.id.tv_description);
+        tvDescription.setText(FruitProvider.getFruitById(position).getDescription());
+
+        // Finds "spCategory" Spiner and sets "selection" property
+        Spinner category = (Spinner) findViewById(R.id.sp_category);
+        List<String> categories = CategoryProvider.getCategoryNames();
+        ArrayAdapter<String> adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, categories);
+        category.setAdapter(adapter);
+        category.setSelection((int)FruitProvider.getFruitById(position).getCategory().getId());
+
+        // Finds "rbRating" RatingBar and sets "rating" property
+        RatingBar rbRating = (RatingBar) findViewById(R.id.rb_rating);
+        rbRating.setRating(FruitProvider.getFruitById(position).getRating());
+
+        // Finds "btnBuy" Button and sets "onClickListener" listener
+        FloatingActionButton btnBuy = (FloatingActionButton) findViewById(R.id.btn_buy);
+        btnBuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showNotification();
+            }
+        });
+*/
        /* final ListView listView = (ListView)findViewById(R.id.lv_films);
 
 
